@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyectos | Goycochea Inmobiliaria - Arquitectura e Ingeniería</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Iconos oficiales de Google -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+    <style>
+        .material-symbols-outlined {
+            vertical-align: middle;
+            font-size: 1.2rem;
+            margin-right: 5px;
+            display: inline-block;
+            line-height: 1;
+        }
+        .filtro-btn .material-symbols-outlined {
+            font-size: 1.1rem;
+            margin-right: 6px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.html" class="logo-text">
+                    <img src="media/logo.png" alt="Logo Goycochea" class="nav-logo-img">
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">INICIO</a></li>
+                <li><a href="index.html#empresa">QUIÉNES SOMOS</a></li>
+                <li><a href="proyectos.html" class="active">PROYECTOS</a></li>
+                <li><a href="contacto.html">CONTACTO</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-proyectos">
+            <div class="hero-content">
+                <h1>NUESTROS PROYECTOS</h1>
+                <p>Descubre los espacios que hemos diseñado y construido</p>
+            </div>
+        </section>
+
+        <div class="filtros-section">
+            <div class="filtros-container">
+                <div class="filtros-botones" id="filtrosBotones">
+                    <button class="filtro-btn active" data-categoria="todos"><span class="material-symbols-outlined">grid_view</span> Todos</button>
+                    <button class="filtro-btn" data-categoria="restaurante"><span class="material-symbols-outlined">restaurant</span> Restaurantes</button>
+                    <button class="filtro-btn" data-categoria="multifamiliar"><span class="material-symbols-outlined">apartment</span> Multifamiliares</button>
+                    <button class="filtro-btn" data-categoria="estatal"><span class="material-symbols-outlined">account_balance</span> Estatales</button>
+                    <button class="filtro-btn" data-categoria="hotel"><span class="material-symbols-outlined">hotel</span> Hoteles</button>
+                    <button class="filtro-btn" data-categoria="techo"><span class="material-symbols-outlined">home</span> Techo Propio</button>
+                </div>
+                <div class="buscador">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="buscadorInput" placeholder="Buscar por nombre o ubicación...">
+                </div>
+            </div>
+        </div>
+
+        <div class="contenedor-proyectos" id="contenedorProyectos"></div>
+    </main>
+
+    <div id="proyectoModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitulo">Detalle del Proyecto</h3>
+                <span class="close-modal" onclick="cerrarModal()">&times;</span>
+            </div>
+            <div class="modal-body" id="modalBody"></div>
+        </div>
+    </div>
+
+<footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-col logo-col">
+                <!-- Logo JG + Letras nítidas con la "R" -->
+                <div class="footer-brand">
+                    <img src="media/logojg.png" alt="Logo JG" class="footer-logo-icon">
+                    <div class="footer-brand-text">
+                        <span class="footer-brand-title">JOSE GOYCOCHEA<sup>®</sup></span>
+                        <span class="footer-brand-sub">ESTUDIO DE ARQUITECTURA E INGENIERÍA</span>
+                    </div>
+                </div>
+
+                <p>Transformando ideas en espacios excepcionales desde 2014.</p>
+                <p style="font-style: italic; color: #c9a050; margin-top: 10px;">«Diseñamos espacios, construimos sueños»</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Navegación</h4>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="index.html#empresa">Quiénes Somos</a></li>
+                    <li><a href="proyectos.html">Proyectos</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Contacto</h4>
+                <p><span class="material-symbols-outlined">location_on</span> Los Dátiles N°133<br>Urb. Fátima, Trujillo</p>
+                <p><span class="material-symbols-outlined">call</span> +51 978 389 044</p>
+                <p><span class="material-symbols-outlined">mail</span> arquitectojosegoycochea@gmail.com</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Ubicación</h4>
+                <div class="map-placeholder">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3949.634981884722!2d-79.0347476857953!3d-8.109282994170832!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91ad3d7f5e6b7c3d%3A0x3b7e7b7e7b7e7b7e!2sTrujillo%2C%20Peru!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Estudio de Arquitectura e Ingeniería. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/51978389044" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // ===== DATOS DE PROYECTOS ACTUALIZADOS =====
+        const proyectosData = {
+            // ===== RESTAURANTES (PRIMERO) =====
+            donrulo: { 
+                titulo: "RESTAURANTE DON RULO", 
+                categoria: "restaurante", 
+                ubicacion: "Trujillo, Perú", 
+                pisos: "1 piso", 
+                area: "180 m²",
+                descripcion: "Restaurante con terraza y espacios acogedores para disfrutar de la mejor gastronomía.", 
+                imagenes: ["media/rulo.png"], 
+                caracteristicas: { "Tipo": "Restaurante", "Área": "180 m²", "Capacidad": "120 personas" } 
+            },
+            moche: { 
+                titulo: "RESTAURANTE MOCHE", 
+                categoria: "restaurante", 
+                ubicacion: "Trujillo, Perú", 
+                pisos: "1 piso", 
+                area: "150 m²",
+                descripcion: "Cafetería con diseño bohemio y terraza jardín, ideal para eventos y reuniones.", 
+                imagenes: ["media/RESTAURANTE MOCHE.jpg"], 
+                caracteristicas: { "Tipo": "Cafetería", "Área": "150 m²", "Estilo": "Bohemio" } 
+            },
+            moche1: { 
+                titulo: "RESTAURANTE MOCHE 1", 
+                categoria: "restaurante", 
+                ubicacion: "Trujillo, Perú", 
+                pisos: "2 pisos", 
+                area: "200 m²",
+                descripcion: "Restaurante con cocina fusión y ambiente moderno, con vista al mar.", 
+                imagenes: ["media/RESTAURANTE MOCHE 1.jpg"], 
+                caracteristicas: { "Tipo": "Restaurante Fusión", "Área": "200 m²", "Especialidad": "Comida fusión" } 
+            },
+            
+            // ===== MULTIFAMILIARES =====
+            cedros: { 
+                titulo: "RESIDENCIAL LOS CEDROS", 
+                categoria: "multifamiliar", 
+                ubicacion: "La Esperanza, Trujillo", 
+                pisos: "4 pisos", 
+                area: "150 m²",
+                descripcion: "Vivienda multifamiliar de 4 pisos. Cuenta con cochera, sala, comedor, cocina, baño y 3 dormitorios por piso.", 
+                imagenes: ["media/RESIDENCIAL LOS CEDROS.jpg"], 
+                caracteristicas: { "Tipo": "Multifamiliar", "Área": "150 m²", "N° Pisos": "4", "Estado": "En Venta" } 
+            },
+            police: { 
+                titulo: "POLICE", 
+                categoria: "multifamiliar", 
+                ubicacion: "Trujillo, Perú", 
+                pisos: "2 pisos", 
+                area: "60 m²",
+                descripcion: "Vivienda unifamiliar de 2 pisos. Cuenta con cochera, sala, comedor, cocina y en el segundo piso 2 dormitorios.", 
+                imagenes: ["media/Police11.jpg"], 
+                caracteristicas: { "Tipo": "Vivienda Unifamiliar", "Área": "60 m²", "N° Pisos": "2" } 
+            },
+            jerusalen: { 
+                titulo: "MULTIFAMILIAR JERUSALEN", 
+                categoria: "multifamiliar", 
+                ubicacion: "Trujillo, Perú", 
+                pisos: "4 pisos", 
+                area: "150 m²",
+                descripcion: "Vivienda multifamiliar de 4 pisos. 1er piso: cochera, sala, comedor, cocina, dormitorio principal.", 
+                imagenes: ["media/jerusalen.png"], 
+                caracteristicas: { "Tipo": "Multifamiliar", "Área": "150 m²", "N° Pisos": "4" } 
+            },
+            robles: { 
+                titulo: "MULTIFAMILIAR LOS ROBLES", 
+                categoria: "multifamiliar", 
+                ubicacion: "Trujillo, Perú", 
+                pisos: "4 pisos", 
+                area: "120 m²",
+                descripcion: "Vivienda multifamiliar para renta. Cada piso tiene un departamento con ingreso independiente.", 
+                imagenes: ["media/robles.png"], 
+                caracteristicas: { "Tipo": "Multifamiliar (Renta)", "Área": "120 m²", "N° Pisos": "4" } 
+            },
+            trujillo: { 
+                titulo: "MULTIFAMILIAR TRUJILLO", 
+                categoria: "multifamiliar", 
+                ubicacion: "Trujillo, Perú", 
+                pisos: "4 pisos", 
+                area: "150 m²",
+                descripcion: "Vivienda multifamiliar de lujo con acabados de primera calidad.", 
+                imagenes: ["media/MULTIFAMILIAR TRUJILLO.jpg"], 
+                caracteristicas: { "Tipo": "Multifamiliar de Lujo", "Área": "150 m²", "Acabados": "Primera calidad" } 
+            },
+            morillas: { 
+                titulo: "MULTIFAMILIAR VIA MORILLAS", 
+                categoria: "multifamiliar", 
+                ubicacion: "Trujillo, Perú", 
+                pisos: "3 pisos", 
+                area: "100 m²",
+                descripcion: "Proyecto unifamiliar para pareja con 2 hijos.", 
+                imagenes: ["media/MULTIFAMILIAR VIA MORILLAS 1.jpg"], 
+                caracteristicas: { "Tipo": "Vivienda Unifamiliar", "Área": "100 m²", "N° Pisos": "3" } 
+            },
+            
+            // ===== ESTATALES =====
+            carbajal: { 
+                titulo: "RESIDENCIAL CARBAJAL", 
+                categoria: "estatal", 
+                ubicacion: "Trujillo, Perú", 
+                pisos: "3 pisos", 
+                area: "120 m²",
+                descripcion: "Conjunto habitacional estatal con diseño contemporáneo y áreas verdes.", 
+                imagenes: ["media/carvajalnuevo.jpg", "media/carvajalnuevo1.jpg"], 
+                caracteristicas: { "Tipo": "Vivienda Estatal", "Diseño": "Contemporáneo", "Estado": "En Construcción" } 
+            },
+            cedrosEstatal: { 
+                titulo: "RESIDENCIAL ZETA LARA", 
+                categoria: "estatal", 
+                ubicacion: "Trujillo, Perú", 
+                pisos: "4 pisos", 
+                area: "150 m²",
+                descripcion: "Vivienda multifamiliar de 4 pisos. Cuenta con cochera, sala, comedor, cocina, baño y 3 dormitorios por piso.", 
+                imagenes: ["media/zetalaranuevo.jpg", "media/zetalaranuevo1.jpg"], 
+                caracteristicas: { "Área": "150 m²", "N° Pisos": "4", "Estado": "En Construcción" } 
+            },
+            magnolias: { 
+                titulo: "RESIDENCIAL MAGNOLIAS", 
+                categoria: "estatal", 
+                ubicacion: "Trujillo, Perú", 
+                pisos: "2 pisos", 
+                area: "90 m²",
+                descripcion: "Viviendas unifamiliares con diseño contemporáneo y acabados de lujo.", 
+                imagenes: ["media/RESIDENCIAL MAGNOLIAS 01.jpg"], 
+                caracteristicas: { "Diseño": "Contemporáneo", "Acabados": "De lujo", "Estado": "Preventa" } 
+            },
+            narvaez: { 
+                titulo: "RESIDENCIAL NARVAEZ", 
+                categoria: "estatal", 
+                ubicacion: "Huanchaco, Trujillo", 
+                pisos: "3 pisos", 
+                area: "41 m²",
+                descripcion: "Tres Cocheras, Sala, Comedor, Cocina, Baño, Dos Dormitorios, Lavandería.", 
+                imagenes: ["media/RESDIENCIAL NARVAEZ 01.jpg"], 
+                caracteristicas: { "Etapa": "Preventa", "Precio": "S/ 55,000", "Área": "41 m²" } 
+            },
+            narvaez2: { 
+                titulo: "RESIDENCIAL NARVAEZ II", 
+                categoria: "estatal", 
+                ubicacion: "Huanchaco, Trujillo", 
+                pisos: "3 pisos", 
+                area: "41 m²",
+                descripcion: "Tres Cocheras, Sala, Comedor, Cocina, Baño, Dos Dormitorios, Lavandería.", 
+                imagenes: ["media/RESIDENCIAL NARVAEZ 02.jpg"], 
+                caracteristicas: { "Etapa": "Preventa", "Precio": "S/ 55,000", "Área": "41 m²" } 
+            },
+            jimenes1: { 
+                titulo: "RESIDENCIAL JIMENES I", 
+                categoria: "estatal", 
+                ubicacion: "Trujillo, Perú", 
+                pisos: "3 pisos", 
+                area: "80 m²",
+                descripcion: "Conjunto habitacional con diseño minimalista y áreas comunes.", 
+                imagenes: ["media/RESIDENCIAL JIMENES 01.jpg"], 
+                caracteristicas: { "Estado": "Preventa", "Área": "80 m²" } 
+            },
+            jimenes2: { 
+                titulo: "RESIDENCIAL JIMENES II", 
+                categoria: "estatal", 
+                ubicacion: "Trujillo, Perú", 
+                pisos: "3 pisos", 
+                area: "85 m²",
+                descripcion: "Segunda etapa del proyecto Jimenes con mejoras y ampliaciones.", 
+                imagenes: ["media/RESIDENCIAL JIMENES 02.jpg"], 
+                caracteristicas: { "Estado": "Preventa", "Área": "85 m²" } 
+            },
+            jimenes3: { 
+                titulo: "RESIDENCIAL JIMENES III", 
+                categoria: "estatal", 
+                ubicacion: "Trujillo, Perú", 
+                pisos: "3 pisos", 
+                area: "90 m²",
+                descripcion: "Tercera fase del complejo residencial Jimenes.", 
+                imagenes: ["media/RESIDENCIA JIMENES 03.jpg"], 
+                caracteristicas: { "Estado": "Preventa", "Área": "90 m²" } 
+            },
+            perez1: { 
+                titulo: "RESIDENCIAL PEREZ I", 
+                categoria: "estatal", 
+                ubicacion: "Trujillo, Perú", 
+                pisos: "3 pisos", 
+                area: "75 m²",
+                descripcion: "Diseño minimalista con amplios espacios y acabados de calidad.", 
+                imagenes: ["media/RESIDENCIAL PEREZ 01.jpg"], 
+                caracteristicas: { "Estado": "En Venta", "Área": "75 m²" } 
+            },
+            perez2: { 
+                titulo: "RESIDENCIAL PEREZ II", 
+                categoria: "estatal", 
+                ubicacion: "Trujillo, Perú", 
+                pisos: "3 pisos", 
+                area: "80 m²",
+                descripcion: "Segunda etapa del proyecto Perez con mejoras y ampliaciones.", 
+                imagenes: ["media/RESIDENCIAL PEREZ 02.jpg"], 
+                caracteristicas: { "Estado": "En Venta", "Área": "80 m²" } 
+            },
+            sausek: { 
+                titulo: "RESIDENCIAL SAUSEK", 
+                categoria: "estatal", 
+                ubicacion: "La Esperanza, Trujillo", 
+                pisos: "3 pisos", 
+                area: "41 m²",
+                descripcion: "Dos Cocheras, Sala, Comedor, Cocina, Baño, Dos Dormitorios, Lavandería.", 
+                imagenes: ["media/RESIDENCIAL SAUCEK 01.jpg", "media/RESIDENCIAL SAUCEK 02.jpg"], 
+                caracteristicas: { "Etapa": "Vendido", "Precio": "S/ 65,000", "Área": "41 m²" } 
+            },
+            tulipanes1: { 
+                titulo: "RESIDENCIAL TULIPANES I", 
+                categoria: "estatal", 
+                ubicacion: "Trujillo, Perú", 
+                pisos: "3 pisos", 
+                area: "100 m²",
+                descripcion: "Conjunto residencial con arquitectura moderna y amplias áreas verdes.", 
+                imagenes: ["media/RESIDENCIAL TULIPANES 01.jpg"], 
+                caracteristicas: { "Estado": "En Venta", "Área": "100 m²" } 
+            },
+            tulipanes2: { 
+                titulo: "RESIDENCIAL TULIPANES II", 
+                categoria: "estatal", 
+                ubicacion: "Trujillo, Perú", 
+                pisos: "3 pisos", 
+                area: "110 m²",
+                descripcion: "Segunda etapa del proyecto Tulipanes con mejoras y ampliaciones.", 
+                imagenes: ["media/RESIDENCIAL TULIPANES 02.jpg"], 
+                caracteristicas: { "Estado": "En Venta", "Área": "110 m²" } 
+            },
+            
+            // ===== HOTELES =====
+            ocean: { 
+                titulo: "HOTEL OCEAN HOUSE", 
+                categoria: "hotel", 
+                ubicacion: "Huanchaco, Trujillo", 
+                pisos: "5 pisos", 
+                area: "800 m²",
+                descripcion: "Hotel boutique frente al mar con 30 habitaciones y restaurante.", 
+                imagenes: ["media/HOTEL OCEAN HOUSE .jpg"], 
+                caracteristicas: { "Tipo": "Hotel Boutique", "Habitaciones": "30" } 
+            },
+            ocean1: { 
+                titulo: "HOTEL OCEAN HOUSE 1", 
+                categoria: "hotel", 
+                ubicacion: "Huanchaco, Trujillo", 
+                pisos: "4 pisos", 
+                area: "600 m²",
+                descripcion: "Ecolodge de lujo integrado al entorno con materiales sostenibles.", 
+                imagenes: ["media/HOTEL OCEAN HOUSE 1 .jpg"], 
+                caracteristicas: { "Tipo": "Ecolodge", "Materiales": "Sostenibles" } 
+            },
+            
+            // ===== TECHO PROPIO =====
+            burgos: { 
+                titulo: "BURGOS RAMOS VIVIANA", 
+                categoria: "techo", 
+                ubicacion: "La Esperanza, Trujillo", 
+                pisos: "1 piso", 
+                area: "45 m²",
+                descripcion: "Vivienda básica de 45 m² con Sala, Comedor, Cocina, 2 Habitaciones, Baño y Lavandería.", 
+                imagenes: ["media/burgos.png"], 
+                caracteristicas: { "Programa": "Techo Propio", "Área": "45 m²", "Tipo": "Vivienda Básica" } 
+            },
+            enrique: { 
+                titulo: "ENRIQUE CERNA ANTONY", 
+                categoria: "techo", 
+                ubicacion: "La Esperanza, Trujillo", 
+                pisos: "1 piso", 
+                area: "35 m²",
+                descripcion: "Vivienda básica de 35.44 m² con espacios funcionales.", 
+                imagenes: ["media/enrique2.png"], 
+                caracteristicas: { "Programa": "Techo Propio", "Área": "35 m²", "Tipo": "Vivienda Básica" } 
+            },
+            fabio: { 
+                titulo: "FABIO JESUS ASCATE", 
+                categoria: "techo", 
+                ubicacion: "La Esperanza, Trujillo", 
+                pisos: "1 piso", 
+                area: "35 m²",
+                descripcion: "Vivienda básica de 35 m² con Sala, Comedor, Cocina, 2 Habitaciones, Baño y Lavandería.", 
+                imagenes: ["media/fabio.png"], 
+                caracteristicas: { "Programa": "Techo Propio", "Área": "35 m²", "Tipo": "Vivienda Básica" } 
+            },
+            fernanda: { 
+                titulo: "FERNANDA GUERRA GLORIA VICTORIA", 
+                categoria: "techo", 
+                ubicacion: "La Esperanza, Trujillo", 
+                pisos: "1 piso", 
+                area: "37 m²",
+                descripcion: "Vivienda básica de 37.50 m² con Sala, Comedor, Cocina, 2 Habitaciones, Baño y Lavandería.", 
+                imagenes: ["media/fernanda.png"], 
+                caracteristicas: { "Programa": "Techo Propio", "Área": "37 m²", "Tipo": "Vivienda Básica" } 
+            },
+            florian: { 
+                titulo: "FLORIAN DIEGO ALEXANDER", 
+                categoria: "techo", 
+                ubicacion: "La Esperanza, Trujillo", 
+                pisos: "1 piso", 
+                area: "35 m²",
+                descripcion: "Vivienda básica de 35 m² con Sala, Comedor, Cocina, 2 Habitaciones, Baño y Lavandería.", 
+                imagenes: ["media/florian.png"], 
+                caracteristicas: { "Programa": "Techo Propio", "Área": "35 m²", "Tipo": "Vivienda Básica" } 
+            },
+            kerly: { 
+                titulo: "KERLY NATALY GARCIA", 
+                categoria: "techo", 
+                ubicacion: "La Esperanza, Trujillo", 
+                pisos: "1 piso", 
+                area: "35 m²",
+                descripcion: "Vivienda básica de 35 m² con Sala, Comedor, Cocina, 2 Habitaciones, Baño y Lavandería.", 
+                imagenes: ["media/kerly.png"], 
+                caracteristicas: { "Programa": "Techo Propio", "Área": "35 m²", "Tipo": "Vivienda Básica" } 
+            },
+            monzon: { 
+                titulo: "MONZON ALFIO", 
+                categoria: "techo", 
+                ubicacion: "La Esperanza, Trujillo", 
+                pisos: "1 piso", 
+                area: "35 m²",
+                descripcion: "Vivienda básica de 35.12 m² con Sala, Comedor, Cocina, 2 Habitaciones, Baño y Lavandería.", 
+                imagenes: ["media/monzon1.png"], 
+                caracteristicas: { "Programa": "Techo Propio", "Área": "35 m²", "Tipo": "Vivienda Básica" } 
+            },
+            sanchez: { 
+                titulo: "SANCHEZ YUDICK ERICK ANTONY", 
+                categoria: "techo", 
+                ubicacion: "La Esperanza, Trujillo", 
+                pisos: "1 piso", 
+                area: "35 m²",
+                descripcion: "Vivienda básica de 35.71 m² con espacios funcionales.", 
+                imagenes: ["media/sanchez.png"], 
+                caracteristicas: { "Programa": "Techo Propio", "Área": "35 m²", "Tipo": "Vivienda Básica" } 
+            },
+            trujillo_felicita: { 
+                titulo: "TRUJILLO FELICITA HAYDE", 
+                categoria: "techo", 
+                ubicacion: "La Esperanza, Trujillo", 
+                pisos: "1 piso", 
+                area: "36 m²",
+                descripcion: "Vivienda básica de 36 m² con Sala, Comedor, Cocina, 2 Habitaciones, Baño y Lavandería.", 
+                imagenes: ["media/trujillo.png"], 
+                caracteristicas: { "Programa": "Techo Propio", "Área": "36 m²", "Tipo": "Vivienda Básica" } 
+            },
+            verde: { 
+                titulo: "VERDE TIBURCIO KIMBERLY", 
+                categoria: "techo", 
+                ubicacion: "La Esperanza, Trujillo", 
+                pisos: "1 piso", 
+                area: "40 m²",
+                descripcion: "Vivienda básica de 40 m² con Sala, Comedor, Cocina, 2 Habitaciones, Baño y Lavandería.", 
+                imagenes: ["media/verde.png"], 
+                caracteristicas: { "Programa": "Techo Propio", "Área": "40 m²", "Tipo": "Vivienda Básica" } 
+            }
+        };
+
+        const categorias = {
+            restaurante: { nombre: "PROYECTOS GASTRONÓMICOS", icono: "restaurant", orden: 0 },
+            multifamiliar: { nombre: "PROYECTOS MULTIFAMILIARES", icono: "apartment", orden: 1 },
+            estatal: { nombre: "PROYECTOS ESTATALES", icono: "account_balance", orden: 2 },
+            hotel: { nombre: "PROYECTOS HOTELEROS", icono: "hotel", orden: 3 },
+            techo: { nombre: "PROYECTOS TECHO PROPIO", icono: "home", orden: 4 }
+        };
+
+        let currentFilter = "todos";
+        let searchTerm = "";
+
+        function renderizarProyectos() {
+            const container = document.getElementById("contenedorProyectos");
+            container.innerHTML = "";
+
+            const proyectosPorCategoria = {};
+            for (const [id, proyecto] of Object.entries(proyectosData)) {
+                const categoria = proyecto.categoria;
+                if (!proyectosPorCategoria[categoria]) proyectosPorCategoria[categoria] = [];
+                proyectosPorCategoria[categoria].push({ id, ...proyecto });
+            }
+
+            const ordenCategorias = ["restaurante", "multifamiliar", "estatal", "hotel", "techo"];
+            let hayResultados = false;
+
+            for (const cat of ordenCategorias) {
+                const proyectos = proyectosPorCategoria[cat];
+                if (!proyectos) continue;
+
+                let proyectosFiltrados = proyectos;
+                if (currentFilter !== "todos") {
+                    proyectosFiltrados = proyectosFiltrados.filter(p => p.categoria === currentFilter);
+                }
+                if (searchTerm.trim() !== "") {
+                    const term = searchTerm.toLowerCase().trim();
+                    proyectosFiltrados = proyectosFiltrados.filter(p => 
+                        p.titulo.toLowerCase().includes(term) || 
+                        p.ubicacion.toLowerCase().includes(term)
+                    );
+                }
+
+                if (proyectosFiltrados.length === 0) continue;
+                
+                hayResultados = true;
+                const catInfo = categorias[cat];
+                const contador = proyectosFiltrados.length;
+
+                const categoriaDiv = document.createElement("div");
+                categoriaDiv.className = "categoria";
+                categoriaDiv.innerHTML = `
+                    <div class="categoria-header">
+                        <h2><span class="material-symbols-outlined">${catInfo.icono}</span> ${catInfo.nombre}</h2>
+                        <span class="contador-proyectos">${contador} proyecto${contador !== 1 ? "s" : ""}</span>
+                    </div>
+                    <div class="grid-proyectos" id="grid-${cat}"></div>
+                `;
+                container.appendChild(categoriaDiv);
+
+                const gridContainer = categoriaDiv.querySelector(`#grid-${cat}`);
+                
+                proyectosFiltrados.forEach(proyecto => {
+                    const tarjeta = document.createElement("div");
+                    tarjeta.className = "tarjeta-proyecto";
+                    tarjeta.onclick = () => mostrarProyecto(proyecto.id);
+                    tarjeta.innerHTML = `
+                        <div class="tarjeta-imagen">
+                            <img src="${proyecto.imagenes[0]}" alt="${proyecto.titulo}" onerror="this.src='media/placeholder.jpg'">
+                            <span class="overlay-categoria">${catInfo.nombre.split(" ")[1] || catInfo.nombre}</span>
+                        </div>
+                        <div class="tarjeta-info">
+                            <h3>${proyecto.titulo}</h3>
+                            <div class="ubicacion"><span class="material-symbols-outlined" style="font-size: 1rem; margin-right: 2px;">location_on</span> ${proyecto.ubicacion}</div>
+                            <p class="descripcion"><span class="material-symbols-outlined" style="font-size: 0.95rem; margin-right: 2px;">square_foot</span> ${proyecto.area} | <span class="material-symbols-outlined" style="font-size: 0.95rem; margin-right: 2px;">domain</span> ${proyecto.pisos}</p>
+                            <button class="btn-ver">VER PROYECTO</button>
+                        </div>
+                    `;
+                    gridContainer.appendChild(tarjeta);
+                });
+            }
+
+            if (!hayResultados) {
+                container.innerHTML = `
+                    <div class="mensaje-no-resultados">
+                        <i class="fas fa-search"></i>
+                        <h3>No se encontraron proyectos</h3>
+                        <p>No hay proyectos que coincidan con "<strong>${searchTerm}</strong>".<br>Prueba con otro término o revisa los filtros seleccionados.</p>
+                    </div>
+                `;
+            }
+
+            // === ANIMACIÓN AL 100% EN LAPTOP/PC ===
+            const observerProyectos = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0 });
+
+            document.querySelectorAll('.tarjeta-proyecto').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'all 0.5s ease forwards';
+                observerProyectos.observe(el);
+            });
+        }
+
+        function mostrarProyecto(id) {
+            const proyecto = proyectosData[id];
+            const modal = document.getElementById("proyectoModal");
+            const modalContent = modal.querySelector(".modal-content");
+            const modalTitulo = document.getElementById("modalTitulo");
+            const modalBody = document.getElementById("modalBody");
+            if (!proyecto) return;
+
+            modalTitulo.textContent = proyecto.titulo;
+
+            // Detecta si es Techo Propio
+            const esTecho = proyecto.categoria === "techo";
+            if (esTecho) {
+                modalContent.classList.add("modal-techo-propio");
+            } else {
+                modalContent.classList.remove("modal-techo-propio");
+            }
+
+            let imagenesHTML = `<div class="modal-main-image"><img id="mainImage" src="${proyecto.imagenes[0]}" alt="${proyecto.titulo}" onerror="this.src='media/placeholder.jpg'"></div>`;
+            if (proyecto.imagenes.length > 1) {
+                imagenesHTML += `<div class="modal-gallery">`;
+                proyecto.imagenes.forEach(img => {
+                    imagenesHTML += `<img src="${img}" alt="Imagen" onclick="cambiarImagen('${img}')" onerror="this.src='media/placeholder.jpg'">`;
+                });
+                imagenesHTML += `</div>`;
+            }
+
+            let caracteristicasHTML = `
+                <div class="modal-caracteristicas">
+                    <h4><span class="material-symbols-outlined">assignment</span> Información del Proyecto</h4>
+                    <ul>
+                        <li><span><span class="material-symbols-outlined">location_on</span> Ubicación:</span> <span>${proyecto.ubicacion}</span></li>
+                        <li><span><span class="material-symbols-outlined">square_foot</span> Área:</span> <span>${proyecto.area}</span></li>
+                        <li><span><span class="material-symbols-outlined">domain</span> Pisos:</span> <span>${proyecto.pisos}</span></li>
+            `;
+            
+            if (proyecto.caracteristicas && Object.keys(proyecto.caracteristicas).length > 0) {
+                for (const [key, value] of Object.entries(proyecto.caracteristicas)) {
+                    if (key !== "Área" && key !== "N° Pisos") {
+                        caracteristicasHTML += `<li><span>${key}:</span> <span>${value}</span></li>`;
+                    }
+                }
+            }
+            caracteristicasHTML += `</ul></div>`;
+
+            // Si es Techo Propio: Foto a la izquierda, información a la derecha
+            if (esTecho) {
+                modalBody.innerHTML = `
+                    <div class="modal-techo-grid">
+                        <div class="modal-techo-foto">
+                            ${imagenesHTML}
+                        </div>
+                        <div class="modal-techo-info">
+                            <div class="modal-descripcion">
+                                <strong><span class="material-symbols-outlined">description</span> Descripción</strong><br>
+                                ${proyecto.descripcion}
+                            </div>
+                            ${caracteristicasHTML}
+                        </div>
+                    </div>
+                `;
+            } else {
+                modalBody.innerHTML = `
+                    ${imagenesHTML}
+                    <div class="modal-descripcion">
+                        <strong><span class="material-symbols-outlined">description</span> Descripción</strong><br>
+                        ${proyecto.descripcion}
+                    </div>
+                    ${caracteristicasHTML}
+                `;
+            }
+
+            modal.style.display = "block";
+            document.body.style.overflow = "hidden";
+        }
+
+        function cambiarImagen(src) {
+            const mainImage = document.getElementById("mainImage");
+            if (mainImage) mainImage.src = src;
+        }
+
+        function cerrarModal() {
+            const modal = document.getElementById("proyectoModal");
+            modal.style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+
+        document.querySelectorAll(".filtro-btn").forEach(btn => {
+            btn.addEventListener("click", () => {
+                document.querySelectorAll(".filtro-btn").forEach(b => b.classList.remove("active"));
+                btn.classList.add("active");
+                currentFilter = btn.dataset.categoria;
+                renderizarProyectos();
+            });
+        });
+
+        const buscadorInput = document.getElementById("buscadorInput");
+        buscadorInput.addEventListener("keyup", (e) => {
+            searchTerm = e.target.value;
+            renderizarProyectos();
+        });
+
+        window.onclick = function(event) {
+            const modal = document.getElementById("proyectoModal");
+            if (event.target === modal) cerrarModal();
+        }
+
+        renderizarProyectos();
+    </script>
+</body>
+</html>
